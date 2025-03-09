@@ -1,16 +1,17 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Header from "./components/header.jsx";
+import Footer from "./components/footer.jsx";
+import Main from "./components/main.jsx";
 
 function App() {
 
 
-    return (
-        <>
-            <div className="flex items-center justify-center h-screen bg-amber-300">ddd</div>
-        </>
-    )
+    return (<>
+        <Header/>
+        <Main/>
+        <Footer/>
+    </>)
 }
 
 export default App
+
