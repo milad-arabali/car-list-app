@@ -1,12 +1,14 @@
 import {useState} from 'react';
 
-function CarsList({data: {title, image, start_production, class_model}}) {
+function CarsList({data, likeHandler}) {
+    const {title, image, start_production, class_model} = data;
     const [liked, setLiked] = useState(false);
     const like = () => {
+        likeHandler(data, liked);
         setLiked((liked) => !liked);
     }
     return (
-        <div className="w-[60%] max-h-[80vh] mx-auto rounded-2xl overflow-hidden shadow-lg bg-white p-4 m-4 relative">
+        <div className=" mx-auto rounded-2xl overflow-hidden shadow-lg bg-white p-4 m-4 relative">
             <div className="flex flex-row items-center gap-4">
                 <div className="w-1/3 flex justify-center">
                     <img className="w-[300px] h-[200px] rounded-xl object-cover" src={image} alt={title}/>

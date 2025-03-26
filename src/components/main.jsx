@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CarsFunc from "./cars.jsx";
 
 function Main(props) {
