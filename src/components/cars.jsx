@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import cars from "../constants/mockData.js";
 import CarsList from "./carsList.jsx";
 import CarListLik from "./carListLik.jsx";
+import Search from "./search.jsx";
 
 function CarsFunc(props) {
     const [likeList, setLikeList] = useState([]);
+    const [car, setCar] = useState(cars);
+    const [search, setSearch] = useState([]);
     const likeListFunc = (cars, status) => {
         if (status) {
             const newList = likeList.filter((i) => i.id !== cars.id);
@@ -13,10 +16,24 @@ function CarsFunc(props) {
             setLikeList((likeList) => [...likeList, cars]);
         }
     }
+    const searchFunc = () => {
+        console.log("ddd", search);
+        if (search) {
+            const newList = cars.filter((i) => i.title.toLowerCase().includes(search));
+            setCar(newList);
+        } else {
+            setCar(cars);
+        }
+    }
     return (<>
+
+
+        <div className="flex gap-1 w-[60%] mx-auto">
+            <Search search={search} setSearch={setSearch}  searchHandler={searchFunc} />
+        </div>
         <div className="flex gap-1 w-[60%] mx-auto">
             <div className="w-full">
-                {cars.map(cars => (
+                {car.map(cars => (
                     <CarsList key={cars.id} data={cars} likeHandler={likeListFunc}/>
                 ))}
             </div>
